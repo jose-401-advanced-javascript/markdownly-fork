@@ -1,6 +1,6 @@
 import { getFiles } from './headerSelectors';
 
-describe('Header Selectors', () => {
+describe.skip('Header Selectors', () => {
   it('should get tabs', () => {
     const state = {
       header: {

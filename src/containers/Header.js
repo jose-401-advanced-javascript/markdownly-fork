@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Tabs from '../components/tabs/Tabs';
 import { getFiles } from '../selectors/headerSelectors';
 import { addFile } from '../actions/headerActions';
 import Form from '../components/form/Form';
 
-const Header = ({ tabs, handleClick, handleSubmit }) => {
+const Header = ({ handleSubmit }) => {
   return (
     <>
       <h1>Markdown Editor</h1>
       <Form handleSubmit={handleSubmit}/>
-      {/* <Tabs tabs={tabs} handleClick={handleClick} /> */}
     </>
   );
 };
@@ -26,20 +24,13 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  tabs: getFiles(state),
+  tabs: getFiles(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   handleSubmit(title) {
     dispatch(addFile(title));
-  },
-  // handleChange({ target }) {
-  //   event.preventDefault();
-  //   dispatch({
-  //     type: 'FORM_UPDATE',
-  //     payload: target.value
-  //   });
-  // }
+  }
 }); 
 
 const HeaderContainer = connect(

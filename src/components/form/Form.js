@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from './Form.css';
 
 const Form = ({ handleSubmit }) => {
-  console.log('***FORM', title);
   const [title, setTile] = useState('');
 
   const handleChange = ({ target }) => {
@@ -19,7 +18,6 @@ const Form = ({ handleSubmit }) => {
     <form className={styles.Form} onSubmit={handleCreateFile}>
       <input type="text" name="title" value={title} onChange={handleChange} placeholder="New file name"></input>
       <button>Create File</button>
-      {/* <button className={styles.saveButton} type="button"><img src="assets/save_file_icon.png"></img></button> */}
     </form>
   );
 };

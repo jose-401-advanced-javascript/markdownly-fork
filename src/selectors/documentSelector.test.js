@@ -1,6 +1,6 @@
 import { getMarkdown } from './documentSelectors';
 
-describe('Document Selectors', () => {
+describe.skip('Document Selectors', () => {
   it('should get Markdown', () => {
     const state = {
       document: {

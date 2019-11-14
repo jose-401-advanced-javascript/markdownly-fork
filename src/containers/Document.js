@@ -6,14 +6,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateMarkdown } from '../actions/documentActions';
 import { getMarkdown } from '../selectors/documentSelectors';
-// import Header from './Header';
 
 const Document = ({ markdown, updateMarkdown }) => {
   
   return (
     <>
         <div className={styles.Document}>
-          {/* <Header markdown={markdown} /> */}
           <Editor markdown={markdown} updateMarkdown={updateMarkdown} />
           <Preview markdown={markdown} />
         </div>
@@ -34,7 +32,6 @@ const mapDispatchToProps = dispatch => ({
   updateMarkdown({ target }) {
     dispatch(updateMarkdown(target.value));
   }
-
 });
 
 const DocumentContainer = connect(
