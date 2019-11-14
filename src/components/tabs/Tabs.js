@@ -4,6 +4,7 @@ import Tab from './Tab';
 import styles from './Tabs.css';
 
 const Tabs = ({ tabs, handleClick }) => {
+  console.log(tabs);
   const tabElements = tabs.map((tab, i) => {
     return (
       <li key={i}>
