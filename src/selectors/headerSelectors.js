@@ -1,1 +1,1 @@
-export const getFiles = state => state.header.tabs;
+export const getFiles = state => state.tabs;
