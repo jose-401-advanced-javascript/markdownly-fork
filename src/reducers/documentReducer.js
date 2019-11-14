@@ -1,8 +1,12 @@
 import { UPDATE_MARKDOWN } from '../actions/documentActions';
 
 const initialState = {
-  markdown: ''
-};
+  markdown: '',
+  files: [
+    // {
+    //   title: '',
+    // }
+  ] };
 
 export default function reducer(state = initialState, action) {
   

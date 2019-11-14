@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 import Tabs from '../components/tabs/Tabs';
 import { getFiles } from '../selectors/headerSelectors';
 import { addFile } from '../actions/headerActions';
+import Form from '../components/form/Form';
 
-const Header = ({ tabs, handleClick }) => {
+const Header = ({ tabs, handleClick, title, handleChange, handleSubmit }) => {
+  console.log(tabs);
   return (
     <>
       <h1>Markdown Editor</h1>
+      <Form title={title} handleChange={handleChange} handleSubmit={event => handleSubmit(event, title)}/>
       <Tabs tabs={tabs} handleClick={handleClick} />
     </>
   );
@@ -16,7 +19,10 @@ const Header = ({ tabs, handleClick }) => {
 
 Header.propTypes = {
   tabs: PropTypes.array,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func
 };
 
 const mapStateToProps = state => ({
@@ -24,8 +30,16 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleClick({ target }) {
+  handleSubmit({ target }) {
+    event.preventDefault();
     dispatch(addFile(target.value));
+  },
+  handleChange({ target }) {
+    event.preventDefault();
+    dispatch({
+      type: 'FORM_UPDATE',
+      payload: target.value
+    });
   }
 }); 
 
