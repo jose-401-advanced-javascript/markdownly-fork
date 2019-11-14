@@ -32,7 +32,6 @@ const mapDispatchToProps = dispatch => ({
   updateMarkdown({ target }) {
     dispatch(updateMarkdown(target.value));
   }
-
 });
 
 const DocumentContainer = connect(
