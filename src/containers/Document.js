@@ -8,7 +8,6 @@ import { updateMarkdown } from '../actions/documentActions';
 import { getMarkdown } from '../selectors/documentSelectors';
 
 const Document = ({ markdown, updateMarkdown }) => {
-  
   return (
     <>
         <div className={styles.Document}>

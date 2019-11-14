@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import { getFiles } from '../selectors/headerSelectors';
 import { addFile } from '../actions/headerActions';
 import Form from '../components/form/Form';
+import Tabs from '../components/tabs/Tabs';
+import { switchTabs } from '../actions/documentActions';
 
-const Header = ({ handleSubmit }) => {
+const Header = ({ tabs, handleSubmit, changeTabs }) => {
   return (
     <>
       <h1>Markdown Editor</h1>
       <Form handleSubmit={handleSubmit}/>
+      <Tabs tabs={tabs} changeTabs={changeTabs} />
     </>
   );
 };
@@ -20,7 +23,8 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
-  markdown: PropTypes.string
+  markdown: PropTypes.string, 
+  changeTabs: PropTypes.func
 };
 
 const mapStateToProps = state => ({
@@ -30,6 +34,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleSubmit(title) {
     dispatch(addFile(title));
+  },
+  changeTabs(title) {
+    dispatch(switchTabs(title));
   }
 }); 
 
