@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import Tab from './Tab';
 import styles from './Tabs.css';
 
-const Tabs = ({ tabs, handleClick }) => {
-  console.log(tabs);
+const Tabs = ({ tabs, changeTabs }) => {
   const tabElements = tabs.map((tab, i) => {
     return (
       <li key={i}>
-        <Tab title={tab} handleClick={handleClick} />
+        <Tab title={tab} changeTabs={changeTabs} />
       </li>
     );
   });
@@ -21,7 +20,7 @@ const Tabs = ({ tabs, handleClick }) => {
 
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.string),
-  handleClick: PropTypes.func
+  changeTabs: PropTypes.func
 };
 
 export default Tabs;

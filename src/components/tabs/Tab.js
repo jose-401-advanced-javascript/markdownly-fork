@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Tab.css';
 
-const Tab = ({ title, handleClick }) => {
+const Tab = ({ title, changeTabs }) => {
   return (
-    <div className={styles.Tab} onClick={handleClick}>
+    <div onClick={() => changeTabs(title)} className={styles.Tab}>
       <h2>{title}</h2>
     </div>
   );
@@ -12,7 +12,7 @@ const Tab = ({ title, handleClick }) => {
 
 Tab.propTypes = {
   title: PropTypes.string,
-  handleClick: PropTypes.func
+  changeTabs: PropTypes.func
 };
 
 export default Tab;

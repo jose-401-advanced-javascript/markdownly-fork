@@ -1,1 +1,1 @@
-export const getFiles = state => state.tabs;
+export const getFiles = state => Object.keys(state.document.files);
