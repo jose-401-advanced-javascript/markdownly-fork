@@ -7,7 +7,7 @@ import styles from './Document.css';
 import { updateMarkdown } from '../actions/documentActions';
 import { getMarkdown } from '../selectors/documentSelectors';
 
-export default Document = () => {
+export default function Document() {
   const markdown = useSelector(getMarkdown);
   const dispatch = useDispatch();
   const changeMarkdown = ({ target }) => dispatch(updateMarkdown(target.value));
@@ -19,7 +19,7 @@ export default Document = () => {
         </div>
       </>
   );
-};
+}
 
 Document.propTypes = {
   markdown: PropTypes.string,
