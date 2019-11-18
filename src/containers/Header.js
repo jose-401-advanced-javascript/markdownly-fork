@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getFiles } from '../selectors/headerSelectors';
-import { addFile, deleteTabs } from '../actions/headerActions';
 import Form from '../components/form/Form';
 import Tabs from '../components/tabs/Tabs';
+import { addFile, deleteTabs } from '../actions/headerActions';
 import { switchTabs } from '../actions/documentActions';
 
-const Header = ({ tabs, handleSubmit, changeTabs, deleteTab }) => {
+export default function Header() {
+
+  const tabs = useSelector(getFiles);
+  const dispatch = useDispatch();
+  const handleSubmit = (title) => dispatch(addFile(title));
+  const changeTabs = (title) => dispatch(switchTabs(title));
+  const deleteTab = (title) => dispatch(deleteTabs(title));
   return (
     <>
       <h1>Markdown Editor</h1>
@@ -15,7 +21,8 @@ const Header = ({ tabs, handleSubmit, changeTabs, deleteTab }) => {
       <Tabs tabs={tabs} changeTabs={changeTabs} deleteTab={deleteTab} />
     </>
   );
-};
+
+}
 
 Header.propTypes = {
   tabs: PropTypes.array,
@@ -27,26 +34,3 @@ Header.propTypes = {
   changeTabs: PropTypes.func,
   deleteTab: PropTypes.func
 };
-
-const mapStateToProps = state => ({
-  tabs: getFiles(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  handleSubmit(title) {
-    dispatch(addFile(title));
-  },
-  changeTabs(title) {
-    dispatch(switchTabs(title));
-  },
-  deleteTab(title) {
-    dispatch(deleteTabs(title));
-  }
-}); 
-
-const HeaderContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
-
-export default HeaderContainer;
